@@ -1,0 +1,113 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Kurdish Converter</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+
+<style>
+  .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+  }
+</style>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+
+  $(function () {
+
+      $('a[href="#time"]').click(function() {
+          $('#englishNumber').val($(this).attr("name"));
+          convert();
+      });
+
+      $('a[href="#number"]').click(function() {
+          $('#englishNumber').val($(this).attr("name"));
+          convert();
+      });
+
+      $('a[href="#date"]').click(function() {
+          $('#englishNumber').val($(this).attr("name"));
+          convert();
+      });
+
+      $('#submit').on('click', function (e) {
+        e.preventDefault();
+        convert();
+      });
+
+      function convert(){
+        $.ajax({
+          type: 'post',
+          url: './demo.php',
+          data: { englishNumber: $('#englishNumber').val() },
+          success: function(result) {
+              $("#result").html(result);
+          },
+          error: function() {
+            alert("something bad went wrong => there's a bug in the script");
+          }
+        });
+      }
+  });
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="row" style="margin-top:20px">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <h1 class="page-header">Kurdish Converter</h1>
+    <h4 class="page-header">Converts English numbers, time, and date to Kurdish Text.</h4>
+      <div id="myform" name="myform">
+        <div class="form-group">
+          <input type="text" style="font-size:16px;" class="form-control" id="englishNumber" name="englishNumber" maxlength="15" placeholder="Enter English number, time, or date" required />
+        </div>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="submit"/>Convert!</button><br />
+      </div>
+      <p id="result" class="lead text-center"></p>
+
+<p>
+Try a number: &emsp; <a href="#number" name="27">27</a> &emsp; <a href="#number" name="53">53</a> &emsp; <a href="#number" name="123">123</a>
+&emsp; <a href="#number" name="750">750</a> &emsp; <a href="#number" name="1736">1,736</a> &emsp; <a href="#number" name="23764">23,764</a>
+&emsp; <a href="#number" name="567324">567,324</a> &emsp; <a href="#number" name="8536423">8,536,423</a> &emsp; <a href="#number" name="129837643">129,837,643</a>
+</p>
+<p>Try a time: &emsp;<a href="#time" name="06:00">06:00</a> &emsp; <a href="#time" name="08:30">08:30</a> &emsp; <a href="#time" name="12:25">12:25</a> &emsp; <a href="#time" name="05:47">05:47</a>
+</p>
+<p>
+Try a date:  &emsp;<a href="#date" name="8-01-1986">08-01-1986</a> &emsp; <a href="#date" name="14-02-2016">14-02-2016</a> &emsp; <a href="#date" name="23-09-1997">23-09-1997</a>
+</p>
+<pre>view on <a href="https://github.com/dawand/Kurdish-Converter"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></pre>
+</div>
+</div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+<p class="text-muted text-center"><a href="http://dawand.me">Dawand Sulaiman</a>
+&emsp;    <a href="https://www.facebook.com/dawan.sul"><i id="social-fb" class="fa fa-facebook fa-2x social"></i></a>
+&emsp;  <a href="https://twitter.com/dawanjiali"><i id="social-tw" class="fa fa-twitter fa-2x social"></i></a>
+&emsp;  <a href="https://www.linkedin.com/in/dawand"><i id="social-tw" class="fa fa-linkedin fa-2x social"></i></a>
+&emsp;  	<a href="https://github.com/dawand"><i id="social-gp" class="fa fa-github fa-2x social"></i></a>
+&emsp;    <a href="mailto:dawand.sulaiman@gmail.com"><i id="social-em" class="fa fa-envelope fa-2x social"></i></a>
+  </p>
+</div>
+</footer>
+</body>
+</html>

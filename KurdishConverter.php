@@ -116,7 +116,7 @@ class KurdishConverter{
           break;
         case 3: // between 100 to 999
           if($numberInString[0] == 1){ $partOne = $numberHashTable["100"];}
-          else{ $partOne = $numberHashTable[$numberInString[0]]." ".$numberHashTable["100"];}
+          else{ if($numberInString[0] != "0"){ $partOne = $numberHashTable[$numberInString[0]]." ".$numberHashTable["100"];} }
 
           if(substr($numberInString,1,strlen($numberInString)-1)>0) {
             $partTwo = $this->CardinalNumber(substr($numberInString,1,strlen($numberInString)-1));
@@ -307,6 +307,15 @@ class KurdishConverter{
     $dateHashTable["7"] = "تەمووز";
     $dateHashTable["8"] = "ئاب";
     $dateHashTable["9"] = "ئەیلول";
+    $dateHashTable["01"] = "کانونی دووەم";
+    $dateHashTable["02"] = "شووبات";
+    $dateHashTable["03"] = "ئازار";
+    $dateHashTable["04"] = "نیسان";
+    $dateHashTable["05"] = "مایس";
+    $dateHashTable["06"] = "حوزەیران";
+    $dateHashTable["07"] = "تەمووز";
+    $dateHashTable["08"] = "ئاب";
+    $dateHashTable["09"] = "ئەیلول";
     $dateHashTable["10"] = "تشرینی یەکەم";
     $dateHashTable["11"] = "تشرینی دووەم";
     $dateHashTable["12"] = "کانونی یەکەم";
@@ -316,7 +325,7 @@ class KurdishConverter{
     $DMonth = $this->CardinalNumber($DateMatch[1]);
     $DYear = $this->CardinalNumber($DateMatch[2]);
 
-    $outPutWord = $DDay."ی ".$DMonth."ی ".$DYear;
+    $outPutWord = $DDay."ی ".$dateHashTable[$DateMatch[1]]."ی ".$DYear;
 
     return $outPutWord;
   }
