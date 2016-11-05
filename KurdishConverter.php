@@ -9,16 +9,16 @@ class KurdishConverter{
   }
 
   public function generateText(){
-    $type = $this->checkType($number);
+    $type = $this->checkType($this->number);
     switch($type){
       case "Time":
-        $word = $this->TimeToWord($token);
+        $word = $this->TimeToWord($this->number);
         break;
       case "Date":
-        $word = $this->DateToWord($token);
+        $word = $this->DateToWord($this->number);
         break;
       case "Number":
-        $word = $this->NumberToWord($token);
+        $word = $this->NumberToWord($this->number);
         break;
       case "UnknownType":
         return "Unknown Type";
@@ -278,17 +278,17 @@ class KurdishConverter{
 
     $prefix=""; $postfix="";
 
-    if(!strpos($this->prevToken,"کاتژمێر") && !strpos($this->prevToken,"سەعات")){
+//    if(!strpos($this->prevToken,"کاتژمێر") && !strpos($this->prevToken,"سەعات")){
       $prefix = "کاتژمێر ";
-    }
-    if(!strpos($this->prevToken,"خولەك") && !strpos($this->prevToken,"دەقە")){
+//    }
+//    if(!strpos($this->prevToken,"خولەك") && !strpos($this->prevToken,"دەقە")){
       $postfix = " خولەك ";
-    }
+//    }
 
     $outPutWord = $prefix.$this->CardinalNumber($hour);
 
     if(intVal($minute) > 0){
-       $outPutWord .= "و ".$this->CardinalNumber($minute).$postfix;
+       $outPutWord .= " و ".$this->CardinalNumber($minute).$postfix;
     }
 
     return $outPutWord;
