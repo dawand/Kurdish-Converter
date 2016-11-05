@@ -5,12 +5,17 @@ This project allows you to convert any English number, time, or date to Kurdish 
 
 1. Include `KurdishConveter.php` into your project folder.
 2. Create an instance of it:
-``` $KC = new KurdishConverter("ReplaceWithAnyEnglishNumber");
+```
+$KC = new KurdishConverter("ReplaceWithAnyEnglishNumber");
+```
 3. Call generateText() method:
-``` $output = $KC->generateText();
+```
+$output = $KC->generateText();
+```
 4. print the output:
-``` echo $output;
-
+``` 
+echo $output;
+```
 ## Contributing
 
 1. Fork it! :smiley:
