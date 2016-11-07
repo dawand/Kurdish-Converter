@@ -53,7 +53,7 @@ class KurdishConverter{
 
   public function CardinalNumber($number){
     $outputWord = "";
-    $numberInString =$number;
+    $numberInString = $number;
 
     $numberHashTable = array();
     $numberHashTable["1"] = " یەک";
@@ -239,6 +239,8 @@ class KurdishConverter{
 
   public function NumberToWord($token){
 
+    $token = ltrim($token, '0');
+
     $outPutWord="";
     $prefix="";
 
@@ -270,6 +272,9 @@ class KurdishConverter{
   }
 
   public function TimeToWord($token){
+
+    $token = ltrim($token, '0');
+
     $outPutWord="";
 
     $re = explode(':', $token);
@@ -295,6 +300,8 @@ class KurdishConverter{
   }
 
   public function DateToWord($token){
+
+    $token = ltrim($token, '0');
     $outPutWord="";
 
     $dateHashTable = array();
