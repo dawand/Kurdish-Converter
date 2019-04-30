@@ -1,6 +1,9 @@
 <?php
 
+namespace Tests;
+
 use PHPUnit\Framework\TestCase;
+use Converter\KurdishConverter;
 
 class ConverterTest extends TestCase {
 	
