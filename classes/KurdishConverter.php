@@ -290,8 +290,8 @@ class KurdishConverter{
 //    if(!strpos($this->prevToken,"کاتژمێر") && !strpos($this->prevToken,"سەعات")){
       $prefix = "کاتژمێر ";
 //    }
-//    if(!strpos($this->prevToken,"خولەك") && !strpos($this->prevToken,"دەقە")){
-      $postfix = " خولەك ";
+//    if(!strpos($this->prevToken,"خولەک") && !strpos($this->prevToken,"دەقە")){
+      $postfix = " خولەک ";
 //    }
 
     $outPutWord = $prefix.$this->CardinalNumber($hour);
