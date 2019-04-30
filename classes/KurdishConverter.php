@@ -60,7 +60,7 @@ class KurdishConverter{
     $numberInString = $number;
 
     $numberHashTable = array();
-    $numberHashTable["1"] = " یەک";
+    $numberHashTable["1"] = "یەک";
     $numberHashTable["2"] = "دوو";
     $numberHashTable["3"] = "سێ";
     $numberHashTable["4"] = "چوار";
@@ -121,8 +121,8 @@ class KurdishConverter{
         case 3: // between 100 to 999
           if($numberInString[0] == 1){ $partOne = $numberHashTable["100"];}
           else{ if($numberInString[0] != "0"){ $partOne = $numberHashTable[$numberInString[0]]." ".$numberHashTable["100"];} }
-
-          if(substr($numberInString,1,strlen($numberInString)-1)>0) {
+                    
+          if(substr($numberInString,1,$numberLength-1)>0) {
             $partTwo = $this->CardinalNumber(substr($numberInString,1,strlen($numberInString)-1));
           }
           break;

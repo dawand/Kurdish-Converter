@@ -7,9 +7,19 @@ use Converter\KurdishConverter;
 
 class ConverterTest extends TestCase {
 	
-	public function testNumber(){
+	public function testNumber1(){
 		$KC = new KurdishConverter(350);
 		$this->assertEquals('سێ سەد و پەنجا' , $KC->generateText());
+	}
+
+	public function testNumber2(){
+		$KC = new KurdishConverter(1156);
+		$this->assertEquals('هەزار و سەد و پەنجا و شەش' , $KC->generateText());
+	}
+
+	public function testNumber3(){
+		$KC = new KurdishConverter(2002);
+		$this->assertEquals('دوو هەزار و دوو' , $KC->generateText());
 	}
 
 	public function testTime(){
@@ -19,6 +29,11 @@ class ConverterTest extends TestCase {
 
 	public function testDate(){
 		$KC = new KurdishConverter('30-04-2019');
-		$this->assertEquals('سیی نیسانی دوو هەزار و  و نۆزدە', $KC->generateText());
+		$this->assertEquals('سیی نیسانی دوو هەزار و نۆزدە', $KC->generateText());
+	}
+
+	public function testDate2(){
+		$KC = new KurdishConverter('01-05-2019');
+		$this->assertEquals('یەکی مایسی دوو هەزار و نۆزدە', $KC->generateText());
 	}
 }
