@@ -13,7 +13,7 @@ install:
 
 # Testing the app (see phpunit.xml) for configs, generating Code Coverage report
 script:
-- composer test
+script: phpunit --configuration phpunit.xml --coverage-text
 
 # Monitor only these branches
 branches:
